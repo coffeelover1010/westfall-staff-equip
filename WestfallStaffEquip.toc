@@ -1,0 +1,8 @@
+## Interface: 16001
+## Title: Westfall Staff Equip
+## Notes: A one-click Staff of Westfall equip reminder in its bonus zones.
+## Author: Videocat
+## Version: 0.2.0-beta
+## SavedVariables: WestfallStaffEquipDB
+
+WestfallStaffEquip.lua
