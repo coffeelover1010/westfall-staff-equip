@@ -162,6 +162,18 @@ Refresh = function()
     local inZone = InStaffZone()
     if not inZone and character.previous then nextRestoreSlot, macro = RestoreAction() end
     button:SetText(nextRestoreSlot and "Restore Weapons" or "Equip Staff")
+    local icon = C_Item.GetItemIconByID(ITEM_ID)
+    if nextRestoreSlot then
+        local item = character.previous[nextRestoreSlot]
+        if item then
+            local itemID = tonumber(item:match("^item:(%d+)"))
+            icon = (itemID and C_Item.GetItemIconByID(itemID)) or "Interface\\Icons\\INV_Misc_QuestionMark"
+        else
+            icon = nextRestoreSlot == 16 and "Interface\\PaperDoll\\UI-PaperDoll-Slot-MainHand"
+                or "Interface\\PaperDoll\\UI-PaperDoll-Slot-SecondaryHand"
+        end
+    end
+    button.itemIcon:SetTexture(icon)
     hideButton:SetText("Hide")
     if not preview and db.enabled
         and GetServerTime() >= (db.hiddenUntil or 0)
@@ -383,6 +395,7 @@ local function StyleHelper(control, title)
     control:SetHighlightTexture(highlight)
     if title then
         local icon = control:CreateTexture(nil, "ARTWORK")
+        control.itemIcon = icon
         icon:SetSize(28, 28)
         icon:SetPoint("LEFT", 9, 0)
         icon:SetTexture(C_Item.GetItemIconByID(ITEM_ID))

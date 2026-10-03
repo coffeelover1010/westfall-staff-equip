@@ -1,3 +1,9 @@
+# 0.2.2-beta
+
+- Show the weapon being restored on the Restore Weapons button, including empty weapon slots.
+
+Offline checks passed; live in-game verification remains pending.
+
 # 0.2.1-beta
 
 - Give the staff reminder a dark frame, gold border, item icon, and clear title.
